@@ -1,0 +1,109 @@
+<!-- formulario.html -->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Solicitud de nueva Tarjeta BCP</title>
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+    <h2>Solicitud de nueva Tarjeta BCP</h2>
+    <form action="#" th:action="@{/formulario}" th:object="${usuario}" method="post">
+        <!-- Tipo de Documento -->
+        <div>
+            <label for="tipoDocumento">Tipo de Documento:</label>
+            <select th:field="*{tipoDocumento}">
+                <option value="DNI">DNI</option>
+                <option value="CARNET_EXTRANJERO">Carnet de Extranjero</option>
+            </select>
+            <span th:if="${#fields.hasErrors('tipoDocumento')}" th:errors="*{tipoDocumento}"></span>
+        </div>
+
+        <!-- Número de Documento -->
+        <div>
+            <label for="numeroDocumento">Número de Documento:</label>
+            <input type="text" th:field="*{numeroDocumento}" />
+            <span th:if="${#fields.hasErrors('numeroDocumento')}" th:errors="*{numeroDocumento}"></span>
+        </div>
+
+        <!-- Apellido Paterno -->
+        <div>
+            <label for="apellidoPaterno">Apellido Paterno:</label>
+            <input type="text" th:field="*{apellidoPaterno}" />
+            <span th:if="${#fields.hasErrors('apellidoPaterno')}" th:errors="*{apellidoPaterno}"></span>
+        </div>
+
+        <!-- Apellido Materno -->
+        <div>
+            <label for="apellidoMaterno">Apellido Materno:</label>
+            <input type="text" th:field="*{apellidoMaterno}" />
+        </div>
+
+        <!-- Nombres -->
+        <div>
+            <label for="nombres">Nombres:</label>
+            <input type="text" th:field="*{nombres}" />
+            <span th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></span>
+        </div>
+
+        <!-- Fecha de Nacimiento -->
+        <div>
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" th:field="*{fechaNacimiento}" />
+            <span th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></span>
+        </div>
+
+        <!-- Sexo -->
+        <div>
+            <label for="sexo">Sexo:</label>
+            <select th:field="*{sexo}">
+                <option value="MASCULINO">Masculino</option>
+                <option value="FEMENINO">Femenino</option>
+            </select>
+            <span th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}"></span>
+        </div>
+
+        <!-- Estado Civil -->
+        <div>
+            <label for="estadoCivil">Estado Civil:</label>
+            <select th:field="*{estadoCivil}">
+                <option value="SOLTERO">Soltero</option>
+                <option value="CASADO">Casado</option>
+                <option value="DIVORCIADO">Divorciado</option>
+                <option value="VIUDO">Viudo</option>
+            </select>
+            <span th:if="${#fields.hasErrors('estadoCivil')}" th:errors="*{estadoCivil}"></span>
+        </div>
+
+        <!-- Situación Laboral -->
+        <div>
+            <label for="situacionLaboral">Situación Laboral:</label>
+            <select th:field="*{situacionLaboral}">
+                <option value="EMPLEADO">Empleado</option>
+                <option value="DESEMPLEADO">Desempleado</option>
+                <option value="INDEPENDIENTE">Independiente</option>
+            </select>
+            <span th:if="${#fields.hasErrors('situacionLaboral')}" th:errors="*{situacionLaboral}"></span>
+        </div>
+
+        <!-- RUC del Empleador -->
+        <div>
+            <label for="rucEmpleador">RUC del Empleador:</label>
+            <input type="text" th:field="*{rucEmpleador}" />
+            <span th:if="${#fields.hasErrors('rucEmpleador')}" th:errors="*{rucEmpleador}"></span>
+        </div>
+
+        <!-- Términos y Condiciones -->
+        <div>
+            <label for="aceptaTerminosYCondiciones">Acepto Términos y Condiciones:</label>
+            <input type="checkbox" th:field="*{aceptaTerminosYCondiciones}" />
+            <span th:if="${#fields.hasErrors('aceptaTerminosYCondiciones')}" th:errors="*{aceptaTerminosYCondiciones}"></span>
+        </div>
+
+        <div>
+            <button type="submit">Solicitar Nueva Tarjeta</button>
+        </div>
+    </form>
+</body>
+</html>
